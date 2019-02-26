@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package http2
+package isbadcipher
 
 // A list of the possible cipher suite ids. Taken from
 // https://www.iana.org/assignments/tls-parameters/tls-parameters.txt
@@ -349,14 +349,14 @@ const (
 	cipher_TLS_RSA_PSK_WITH_CHACHA20_POLY1305_SHA256     uint16 = 0xCCAE
 )
 
-// isBadCipher reports whether the cipher is blacklisted by the HTTP/2 spec.
+// IsBadCipher reports whether the cipher is blacklisted by the HTTP/2 spec.
 // References:
 // https://tools.ietf.org/html/rfc7540#appendix-A
 // Reject cipher suites from Appendix A.
 // "This list includes those cipher suites that do not
 // offer an ephemeral key exchange and those that are
 // based on the TLS null, stream or block cipher type"
-func isBadCipher(cipher uint16) bool {
+func IsBadCipher(cipher uint16) bool {
 	switch cipher {
 	case cipher_TLS_NULL_WITH_NULL_NULL,
 		cipher_TLS_RSA_WITH_NULL_MD5,
